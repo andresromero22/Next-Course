@@ -12,6 +12,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   const handleSearch = useDebouncedCallback((term) => {
       const params = new URLSearchParams(searchParams);
+      params.set('page', '1');
       if (term) {
         params.set('query', term);
       } else {
@@ -19,7 +20,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
       }
       replace(`${pathname}?${params.toString()}`);
     }
-    , 300
+    , 1000
   )
 
   return (
